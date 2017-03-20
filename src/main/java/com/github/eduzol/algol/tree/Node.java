@@ -16,14 +16,16 @@ public class Node {
 		this.value = new Value(key, value);
 	}
 	
-	public void displayNode(){
-		
+	public Value getValue() {
+		return value;
+	}
+
+	public void setValue(Value value) {
+		this.value = value;
 	}
 
 	@Override
 	public String toString() {
 		return "Node [value=" + value + "]";
 	}
-	
-	
 }

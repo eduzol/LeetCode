@@ -61,6 +61,21 @@ public class Tree {
 		}
 	}
 	
+	private void inOrderTraversal(Node node){
+		
+		if ( node != null ){
+			 inOrderTraversal(node.leftChild);
+			 System.out.println(node);
+			 inOrderTraversal(node.rightChild);
+		}
+		
+	}
+	
+	public void displayTree(){
+		inOrderTraversal(root);
+	}
+	
+	
 	public void delete(int ket ){
 		
 	}
