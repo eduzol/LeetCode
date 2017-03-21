@@ -76,8 +76,57 @@ public class Tree {
 	}
 	
 	
-	public void delete(int ket ){
+	public boolean delete(int key  ){
 		
+		/**
+		 * First Part, find the node, add leftchild marker
+		 */
+		
+		Node current = root;
+		Node parent = root;
+		boolean isLeftChild = true;
+		
+		while ( current.value.key != key ){
+			
+			parent = current;
+			
+			if ( key < current.value.key ){
+				//go left
+				isLeftChild = true;
+				current = current.leftChild;
+							
+			}else{
+				//go right
+				isLeftChild = false;
+				current = current.rightChild;
+				
+			}
+		
+			if ( current == null ){
+				return false;
+			}
+			
+		}
+		
+		/**
+		 * First case, node is a leaf , node has no children
+		 */
+		
+		if ( current.leftChild == null && current.rightChild == null){
+			
+			if ( current == root){
+				root = null;
+			}else if ( isLeftChild ){
+				parent.leftChild = null;
+			}else{
+				parent.rightChild = null;
+			}
+			return true;
+		}
+		
+		
+		
+		
+		return true;
 	}
-	
 }

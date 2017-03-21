@@ -1,6 +1,6 @@
 package com.github.eduzol.leetcode;
-import org.junit.Test;
 import org.junit.Assert;
+import org.junit.Test;
 
 import com.github.eduzol.algol.tree.Node;
 import com.github.eduzol.algol.tree.Tree;
@@ -32,6 +32,22 @@ public class TreeTest {
 		tree.insert(75, 1.9);
 		tree.displayTree();
 
+	}
+	
+	@Test
+	public void testDeleteNodeNoChildren(){
+		
+		Tree tree = new Tree();
+		tree.insert(50, 1.5);
+		tree.insert(25, 1.7);
+		tree.insert(75, 1.9);
+		
+		boolean isDeleted = tree.delete(75);
+		Node foundNode = tree.find(75);
+		tree.displayTree();
+		
+		Assert.assertTrue(isDeleted);
+		Assert.assertNull(foundNode);
 	}
 }
 
