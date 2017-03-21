@@ -124,8 +124,35 @@ public class Tree {
 			return true;
 		}
 		
+		/**
+		 * Second case, node has only one children  
+		 */
 		
+		if ( current.leftChild == null  && current.rightChild != null  ){
+			
+			if ( isLeftChild ){
+				parent.leftChild = current.rightChild;
+			}else{
+				parent.rightChild = current.rightChild;
+			}
+			return true;
+			
+		}else if ( current.leftChild != null  && current.rightChild == null ){
+			
+			if( isLeftChild ){
+				parent.leftChild =  current.leftChild;
+			}else{
+				parent.rightChild = current.leftChild;
+			}
+			
+			return true;
+			
+		}
 		
+		/**
+		 * TODO Third case, node has both children 
+		 */
+
 		
 		return true;
 	}
