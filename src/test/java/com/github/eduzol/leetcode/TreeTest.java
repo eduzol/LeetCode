@@ -97,5 +97,28 @@ public class TreeTest {
 		Assert.assertNotNull(minimum);
 		Assert.assertEquals(minimum.getValue().getKey(), 50);
 	}
+	
+	@Test
+	public void testNodeDeleteTwoChildren(){
+		
+		Tree tree = new Tree();
+		tree.insert(50, 50.50);
+		tree.insert(75, 75.75);
+		tree.insert(62, 62.62);
+		tree.insert(87, 87.87);
+		tree.insert(77, 77.77);
+		tree.insert(93, 93.93);
+		tree.insert(79, 79.79);
+		
+		boolean isDeleted  = tree.delete(75);
+		Node node = tree.find(77);
+		tree.displayTree();
+		
+		Assert.assertTrue(isDeleted);
+		Assert.assertNotNull(node);
+		Assert.assertEquals( node.getLeftChild().getValue().getKey(), 62);
+		Assert.assertEquals( node.getRightChild().getValue().getKey(), 87);
+		
+	}
 }
 

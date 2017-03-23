@@ -23,6 +23,16 @@ public class Node {
 	public void setValue(Value value) {
 		this.value = value;
 	}
+	
+	
+
+	public Node getLeftChild() {
+		return leftChild;
+	}
+
+	public Node getRightChild() {
+		return rightChild;
+	}
 
 	@Override
 	public String toString() {

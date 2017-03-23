@@ -155,10 +155,51 @@ public class Tree {
 		 * TODO Third case, node has both children 
 		 * To delete a node with two children, replace the node with its inorder succesor
 		 */
-		
-		
+		if (current.leftChild != null  && current.rightChild != null  ){
+			Node successor = getSuccesor(current);
+			
+			if ( current == root){
+				root = successor;
+			}else if (isLeftChild ){
+				parent.leftChild = successor;
+			}else{
+				parent.rightChild = successor;
+			}
+			
+			successor.leftChild = current.leftChild;
+		}
 		
 		return true;
+	}
+	
+	public Node getSuccesor( Node delNode ){
+		
+		
+		Node successorParent = delNode;
+		Node successor = delNode;
+		Node current = delNode.rightChild;
+		
+		while ( current != null ){
+			
+			successorParent = successor;
+			successor = current;
+			current = current.leftChild;
+			
+		}
+		
+		/**
+		 * If successor is not right child: 
+		 * make right child , left child
+		 */
+		
+		if ( successor != delNode.rightChild ){
+			
+			successorParent.leftChild = successor.rightChild;
+			successor.rightChild = delNode.rightChild;
+
+		}
+		
+		return successor;
 	}
 	
 	public Node findMinimumNode( Node node ){
