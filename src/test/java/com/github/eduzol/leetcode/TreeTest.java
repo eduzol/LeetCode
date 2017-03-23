@@ -69,5 +69,21 @@ public class TreeTest {
 		Assert.assertNull(foundNode);
 		
 	}
+	
+	@Test
+	public void testMinimumValues() {
+		
+		Tree tree = new Tree();
+		tree.insert(50, 1.5);
+		tree.insert(25, 1.7);
+		tree.insert(75, 1.9);
+		tree.insert(1, 1.7);
+		tree.insert(100 ,3.1);
+		
+		Node minimum = tree.findMinimumNode(tree.getRoot());
+		
+		Assert.assertNotNull(minimum);
+		Assert.assertEquals(minimum.getValue().getKey(), 1);
+	}
 }
 

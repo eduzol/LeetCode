@@ -4,6 +4,10 @@ public class Tree {
 
 	private Node root;
 	
+	public Node getRoot() {
+		return root;
+	}
+
 	public Node find(int key){
 		
 		Node current = this.root;
@@ -144,16 +148,28 @@ public class Tree {
 			}else{
 				parent.rightChild = current.leftChild;
 			}
-			
 			return true;
-			
 		}
 		
 		/**
 		 * TODO Third case, node has both children 
+		 * To delete a node with two children, replace the node with its inorder succesor
 		 */
-
+		
+		
 		
 		return true;
+	}
+	
+	public Node findMinimumNode( Node node ){
+		
+		Node current = node;
+		Node last = node;
+		while (  current != null) {
+			last = current;
+			current = current.leftChild;
+		}
+		
+		return last;
 	}
 }
