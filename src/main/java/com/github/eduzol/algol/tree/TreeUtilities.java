@@ -79,6 +79,47 @@ public class TreeUtilities {
 		return paths;
 	}
 	
+	public int getMaxDepth( Tree tree ) {
+		
+		if ( tree == null ){
+			return 0;
+		}
+		
+		Node root = tree.getRoot();
+		
+		if ( root == null){
+			return 0;
+		}
+		
+		Deque<Node> stack = new LinkedList<Node>();
+		stack.push(root);
+		Deque<Integer> count  = new LinkedList<Integer>();
+		count.push(1);
+		int max = 0;
+		
+		while (!stack.isEmpty()) {
+			
+			Node current = stack.pop();
+			Integer value = count.pop();
+			
+			if ( current.rightChild != null ){
+				stack.push(current.rightChild);
+				count.push(value+1);
+			}
+			
+			if (current.leftChild != null ){
+				stack.push(current.leftChild);
+				count.push(value+1);
+			}
+			
+			max = Math.max( value , max );
+			
+		}
+		
+		return max;
+		
+	}
+	
 	public boolean isLeafNode(Node node){
 		
 		if ( node.leftChild == null && node.rightChild == null){
