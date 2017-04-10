@@ -155,4 +155,37 @@ public class TreeUtilities {
 		return result;
 		
 	}
+	
+	
+	public List<Double> preOrderTrasversal( Node node ){
+		
+		List<Double> results  = new LinkedList<Double>();
+		
+		if ( node == null ){
+			return results;
+		}
+
+		Deque<Node> stack = new LinkedList<Node>();
+		
+		stack.push(node);
+		
+		while( !stack.isEmpty() ){
+			
+			Node current  = stack.pop();
+						
+			if ( current.rightChild != null  ){
+				stack.push(current.rightChild);
+			}
+			
+			if ( current.leftChild != null ){
+				stack.push(current.leftChild);
+			}
+			
+			results.add(current.value.getValue());
+		}
+		
+		return results;
+		
+		
+	}
 }
