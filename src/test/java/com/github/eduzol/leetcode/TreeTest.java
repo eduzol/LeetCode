@@ -206,12 +206,13 @@ public class TreeTest {
 		TreeUtilities util = new TreeUtilities();
 		
 		List<Double>  results  =	util.inOrderTraversal(tree.getRoot());
-		
-		for (Double result : results ){
-			System.out.println(result);
+
+		for ( int i = 0 ; i < (results.size() -1 ) ; i++ ) {
+				
+			Double value = results.get(i);
+			Double value2 =  results.get(i+1);
+			Assert.assertTrue(value < value2);
 		}
-		
-		
 		
 	}
 }
