@@ -8,7 +8,7 @@ import java.util.List;
 public class TreeUtilities {
 
 	/**
-	 * Non recursive Deep first search
+	 * Non recursive Deep first search 
 	 * @param tree
 	 * @param target
 	 * @return
@@ -127,5 +127,32 @@ public class TreeUtilities {
 		}else{
 			return false;
 		}
+	}
+	
+	public List<Double> inOrderTraversal(Node node){
+		
+		List<Double> result = new ArrayList<Double>();
+		
+		if ( node == null ){
+			return result;
+		}
+		
+		Deque<Node> stack = new LinkedList<Node>();
+		Node current  = node;
+		
+		while ( !stack.isEmpty() || current != null ) {
+			
+			while(  current != null ){
+				stack.push(current);
+				current = current.leftChild;
+			}
+			
+			current = stack.pop();
+			result.add(current.value.getValue());
+			current = current.rightChild;
+		}
+		
+		return result;
+		
 	}
 }
