@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class TreeUtilities {
 
@@ -188,4 +189,46 @@ public class TreeUtilities {
 		
 		
 	}
+	
+	/**
+	 * Non recursive Breadth first Search
+	 */
+	
+	public Node breadthFirstSearch( Tree tree  , Integer val){
+
+		if ( tree == null ){
+			return null;
+		}
+		
+		Node root = tree.getRoot();
+		
+		if ( root == null ){
+			return null;
+		}
+		
+		Queue<Node> queue = new LinkedList<Node>();
+		queue.add(root);
+		
+		while (!queue.isEmpty() ){
+			
+			Node current = queue.poll();
+			
+			if (current.leftChild != null){
+				queue.add(current.leftChild);
+			}
+			
+			if( current.rightChild != null ){
+				queue.add(current.rightChild);
+			}
+			
+			System.out.println("Visiting " + current);
+			if ( current.value.key == val ){
+				return current;
+			}
+		}
+		
+		return null;
+		
+	}
+	
 }

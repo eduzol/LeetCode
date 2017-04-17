@@ -237,5 +237,28 @@ public class TreeTest {
 		}
 		
 	}
+	
+	
+	@Test
+	public void testBFS(){
+		
+		Tree tree = new Tree();
+		tree.insert(50, 50.50);
+		tree.insert(75, 75.75);
+		tree.insert(62, 62.62);
+		tree.insert(87, 87.87);
+		tree.insert(77, 77.77);
+		tree.insert(93, 93.93);
+		tree.insert(79, 79.79);
+		
+		TreeUtilities util = new TreeUtilities();
+		
+		Node node = util.breadthFirstSearch(tree, 77);
+		
+		Assert.assertNotNull(node);
+		Assert.assertEquals(node.getValue().getValue(), 77.77 , .5);
+		Assert.assertEquals(node.getValue().getKey(), 77 );
+		
+	}
 }
 
